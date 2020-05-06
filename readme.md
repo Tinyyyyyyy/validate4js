@@ -1,7 +1,7 @@
 node数据校验工具
 
 例子：
-let Validate = require('node-validate');
+let Validate = require('validate4js');
 let options = [
   { key: 'num', required: false, type: 'number', },
   { key: 'str1', required: true, type: 'string', }];
