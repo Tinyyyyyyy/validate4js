@@ -7,7 +7,7 @@ let options = [
   { key: 'str1', required: true, type: 'string', }];
 let param = { str1: '123' }
 let test = new Validate(options, param)
-let res = test.check();
+let res = test.execute();
 
 console.log(res)
 

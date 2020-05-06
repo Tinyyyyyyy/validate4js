@@ -9,7 +9,7 @@ describe('required测试', function () {
       { key: 'str1', required: true, type: 'string', }];
     let param = { str1: '123' }
     let test = new Validate(options, param)
-    let res = test.check();
+    let res = test.execute();
     assert.equal(res.err, 0);
   });
 
@@ -19,7 +19,7 @@ describe('required测试', function () {
       { key: 'str1', required: true, type: 'string', }];
     let param = { str1: 123 }
     let test = new Validate(options, param)
-    let res = test.check();
+    let res = test.execute();
     assert.equal(res.err, -1);
   });
 });
@@ -31,7 +31,7 @@ describe('String测试', function () {
       { key: 'str1', required: true, type: 'string', }];
     let param = { str: 123, str1: '123' }
     let test = new Validate(options, param)
-    let res = test.check();
+    let res = test.execute();
     assert.equal(res.err, -1);
   });
   it('String正确类型err返回', function () {
@@ -40,7 +40,7 @@ describe('String测试', function () {
       { key: 'str1', required: true, type: 'string', }];
     let param = { str: '123', str1: '123' }
     let test = new Validate(options, param)
-    let res = test.check();
+    let res = test.execute();
     assert.equal(res.err, 0);
   });
 });
@@ -52,7 +52,7 @@ describe('Number测试', function () {
       { key: 'num1', required: true, type: 'number', }];
     let param = { num: '123', num1: '123' }
     let test = new Validate(options, param)
-    let res = test.check();
+    let res = test.execute();
     assert.equal(res.err, 0);
   });
   it('Number错误类型err返回', function () {
@@ -61,7 +61,7 @@ describe('Number测试', function () {
       { key: 'num1', required: true, type: 'number', }];
     let param = { num: 'asdsds', num1: '123' }
     let test = new Validate(options, param)
-    let res = test.check();
+    let res = test.execute();
     assert.equal(res.err, -1);
   });
 });
@@ -74,7 +74,7 @@ describe('Boolean测试', function () {
       { key: 'test1', required: true, type: 'boolean', }];
     let param = { test: false, test1: true }
     let test = new Validate(options, param)
-    let res = test.check();
+    let res = test.execute();
     assert.equal(res.err, 0);
   });
   it('Boolean错误类型err返回', function () {
@@ -83,7 +83,7 @@ describe('Boolean测试', function () {
       { key: 'test1', required: true, type: 'boolean', }];
     let param = { test1: '123' }
     let test = new Validate(options, param)
-    let res = test.check();
+    let res = test.execute();
     assert.equal(res.err, -1);
   });
 });
@@ -96,13 +96,13 @@ describe('Enum测试', function () {
   it('Enum错误类型err返回', function () {
     let param = { test1: true }
     let test = new Validate(options, param)
-    let res = test.check();
+    let res = test.execute();
     assert.equal(res.err, -1);
   });
   it('Enum正确类型err返回', function () {
     let param = { test1: 'eee' }
     let test = new Validate(options, param)
-    let res = test.check();
+    let res = test.execute();
     assert.equal(res.err, 0);
   });
 });
@@ -114,13 +114,13 @@ describe('Array测试', function () {
   it('Array错误类型err返回', function () {
     let param = { test1: '123232' }
     let test = new Validate(options, param)
-    let res = test.check();
+    let res = test.execute();
     assert.equal(res.err, -1);
   });
   it('Array正确类型err返回', function () {
     let param = { test1: ['eee'] }
     let test = new Validate(options, param)
-    let res = test.check();
+    let res = test.execute();
     assert.equal(res.err, 0);
   });
 });
@@ -140,20 +140,20 @@ describe('Object测试', function () {
   it('Object错误类型err返回', function () {
     let param = { test1: '123232' }
     let test = new Validate(options, param)
-    let res = test.check();
+    let res = test.execute();
     assert.equal(res.err, -1);
   });
   it('Object正确类型err返回', function () {
     let param = { test1: { a: 1, b: 2 } }
     let test = new Validate(options, param)
-    let res = test.check();
+    let res = test.execute();
     assert.equal(res.err, 0);
   });
 
   it('Object递归类型err返回', function () {
     let param = { test1: { a: 1, b: 2 }, test2: { a: '12asds', b: 1232, c: 'xxx' } }
     let test = new Validate(options, param)
-    let res = test.check();
+    let res = test.execute();
     assert.equal(res.err, 0);
   });
 });
@@ -166,13 +166,13 @@ describe('Date测试', function () {
   it('Date错误类型err返回', function () {
     let param = { test1: 'xxxxxx' }
     let test = new Validate(options, param)
-    let res = test.check();
+    let res = test.execute();
     assert.equal(res.err, -1);
   });
   it('Date正确类型err返回', function () {
     let param = { test1: '2020-01-01 12:12:12' }
     let test = new Validate(options, param)
-    let res = test.check();
+    let res = test.execute();
     assert.equal(res.err, 0);
   });
 });
@@ -193,13 +193,13 @@ describe('Function测试', function () {
   it('Function错误类型err返回', function () {
     let param = { test1: 'xxxxxx' }
     let test = new Validate(options, param)
-    let res = test.check();
+    let res = test.execute();
     assert.equal(res.err, -1);
   });
   it('Function正确类型err返回', function () {
     let param = { test: 1, test1: 'aaa' }
     let test = new Validate(options, param)
-    let res = test.check();
+    let res = test.execute();
     assert.equal(res.err, 0);
   });
 });
