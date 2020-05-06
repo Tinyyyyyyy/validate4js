@@ -10,3 +10,6 @@ let test = new Validate(options, param)
 let res = test.check();
 
 console.log(res)
+
+测试：
+npm run test;
