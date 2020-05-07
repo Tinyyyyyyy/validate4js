@@ -3,7 +3,9 @@
 ### 例子
 
 ``` javascript
-let Validate = require('validate4js'); //or import Validate from "validate4js";
+let Validate = require('validate4js'); 
+//or import Validate from "validate4js";
+//typescript import Validate = require('../../../../tt');
 let options = [
   {key: 'num',required: false,type: 'number'},
   {key: 'str1',required: true,type: 'string'},
