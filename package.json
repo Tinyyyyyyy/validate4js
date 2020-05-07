@@ -1,6 +1,6 @@
 {
   "name": "validate4js",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "数据类型校验工具",
   "main": "index.js",
   "scripts": {
