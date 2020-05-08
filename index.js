@@ -105,7 +105,7 @@ Validator.prototype.checkBoolean = function (option, paramItem) {
 
 Validator.prototype.checkEnum = function (option, paramItem) {
   if (paramItem) {
-    if (!option.enumOption || !Array.isArray(option.enumOption)) {
+    if (!option.enumOption || !isArray(option.enumOption)) {
       this.recursion = false;
       return { msg: `请配置${option.key}的enumOption`, err: -1 };
     }
@@ -129,7 +129,7 @@ Validator.prototype.checkDate = function (option, paramItem) {
 
 Validator.prototype.checkArray = function (option, paramItem) {
   if (paramItem) {
-    if (!Array.isArray(paramItem)) {
+    if (!isArray(paramItem)) {
       this.recursion = false;
       return { msg: `${option.key}参数类型为${option.type}`, err: -1 };
     }
@@ -143,7 +143,7 @@ Validator.prototype.checkObject = function (option, paramItem) {
       this.recursion = false;
       return { msg: `${option.key}参数类型为${option.type}`, err: -1 };
     }
-    if (Array.isArray(option.options) && option.options.length > 0) {
+    if (isArray(option.options) && option.options.length > 0) {
       const validate = new Validator(option.options, paramItem);
       const r = validate.execute();
       if (r.err !== 0) {
@@ -162,4 +162,8 @@ Validator.prototype.checkFunction = function (option, paramItem) {
     return { msg: `${option.key}参数类型校验不正确`, err: -1 };
   }
   this.data[option.key] = paramItem;
+}
+
+function isArray(arr) {
+  return Array.prototype.isPrototypeOf(arr)
 }
