@@ -1,5 +1,8 @@
 ## js数据校验工具
 
+### 下载
+npm install validate4js --S
+
 ### 例子
 
 ``` javascript
